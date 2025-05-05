@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const cors = require('cors');
 const app = express();
 
-const BASICSIEGE_ID = 295483161;
+const BASICSIEGE_ID = 1;
 
 app.use(cors());
 app.use(express.json());
