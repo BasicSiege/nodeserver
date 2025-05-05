@@ -20,14 +20,14 @@ app.post('/following-check', async (req, res) => {
     const data = await response.json();
 
     const isFollowing = data.data.some(user => user.id === targetUserId);
-    res.json({ isFollowing });
+    return res.json({ isFollowing });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to fetch followings.' });
+    return res.status(500).json({ error: 'Failed to fetch followings.' });
   }
 });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
