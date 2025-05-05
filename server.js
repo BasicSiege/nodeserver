@@ -3,23 +3,23 @@ const fetch = require('node-fetch');
 const cors = require('cors');
 const app = express();
 
-const BASICSIEGE_ID = 1;
+const BASICSIEGE_ID = 295483161;
 
 app.use(cors());
 app.use(express.json());
 
 app.post('/following-check', async (req, res) => {
-  const { userId, targetUserId } = req.body;
+  const { userId } = req.body;
 
-  if (!userId || !targetUserId) {
-    return res.status(400).json({ error: 'Missing userId or targetUserId' });
+  if (!userId) {
+    return res.status(400).json({ error: 'Missing userId' });
   }
 
   try {
     const response = await fetch(`https://friends.roblox.com/v1/users/${userId}/followings?limit=100`);
     const data = await response.json();
 
-    const isFollowing = data.data.some(user => user.id === targetUserId);
+    const isFollowing = data.data.some(user => user.id === BASICSIEGE_ID);
     return res.json({ isFollowing });
   } catch (err) {
     console.error(err);
