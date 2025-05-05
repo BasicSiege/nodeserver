@@ -25,9 +25,8 @@ app.post('/following-check', async (req, res) => {
   }
 });
 
-// ✅ Add this GET route for browser visits:
 app.get('/', (req, res) => {
-  res.send('✅ Roblox Follow Proxy is running. Use POST /following-check with JSON: { "userId": <yourId>, "targetUserId": 1 }');
+  res.send('✅ Roblox Follow Proxy is running. Use POST /following-check with { userId, targetUserId }.');
 });
 
 const port = process.env.PORT || 3000;
